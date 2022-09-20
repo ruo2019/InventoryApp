@@ -30,6 +30,10 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         val newItem = getNewItemEntry(itemName, itemPrice, itemCount)
         insertItem(newItem)
     }
+
+    fun retrieveItem(id: Int): LiveData<Item> {
+        return itemDao.getItem(id).asLiveData()
+    }
 }
 
 class InventoryViewModelFactory(private val itemDao: ItemDao) : ViewModelProvider.Factory {
